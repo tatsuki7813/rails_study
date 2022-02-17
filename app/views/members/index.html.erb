@@ -26,7 +26,9 @@
           <td><%= member.full_name %></td>
           <td>
             <%= link_to "編集", [:edit, member] %> |
-            <%= link_to "削除", member, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+            <!-- link_toでdeleteメソッドを実現するにはjsを読み込まないといけないがうまくいかないので一旦button_toで対応 -->
+            <!-- <%= link_to "削除", member, method: :delete %> -->
+            <%= button_to '削除', member, method: :delete %>
           </td>
         </tr>
       <% end %>
