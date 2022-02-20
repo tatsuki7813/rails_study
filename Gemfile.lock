@@ -75,6 +75,8 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    email_validator (1.6.0)
+      activemodel
     erubi (1.10.0)
     ffi (1.15.4)
     globalid (1.0.0)
@@ -196,6 +198,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  email_validator (~> 1.6)
   jbuilder (~> 2.7)
   listen (~> 3.2)
   puma (~> 4.1)
@@ -212,4 +215,4 @@ RUBY VERSION
    ruby 2.6.5p114
 
 BUNDLED WITH
-   2.3.4
+   2.3.7
