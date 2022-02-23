@@ -7,3 +7,10 @@
     <%= menu_link_to "管理ページ", "#" %>
   </ul>
 </nav>
+
+<% if current_member %>
+  <ul class="account-menu">
+    <%= current_member.name + "さん" %>
+    <%= button_to 'ログアウト', :session, method: :delete %>
+  </ul>
+<% end %>
