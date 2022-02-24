@@ -12,7 +12,7 @@
 
 <% if current_member %>
   <ul class="account-menu">
-    <%= current_member.name + "さん" %>
+    <%= menu_link_to current_member.name + "さん", :account %>
     <%= button_to 'ログアウト', :session, method: :delete %>
   </ul>
 <% end %>
