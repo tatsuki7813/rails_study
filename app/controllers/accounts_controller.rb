@@ -8,4 +8,14 @@ class AccountsController < ApplicationController
   def edit
     @member = current_member
   end
+
+  def update
+    @member = current_member
+    @member.assign_attributes(params[:account])
+    if @member.save
+      redirect_to @member, notice: "アカウント情報を更新しました"
+    else
+      redner "edit"
+    end
+  end
 end
