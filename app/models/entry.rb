@@ -11,4 +11,16 @@ class Entry < ApplicationRecord
   scope :published, -> { where("status <> ?", "draft") }
   scope :full, -> (member) { where("status <> ? OR member_id = ?", "draft", member.id ) }
   scope :readable_for, -> (member) { member ? full(member) : common }
+
+  class << self
+    def status_text(status)
+      I18n.t("activerecord.attributes.entry.status_#{status}")
+    end
+
+    def status_options
+      STATUS_VALUES.map do |status|
+        [status_text(status), status]
+      end
+    end
+  end
 end
