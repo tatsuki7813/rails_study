@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   resources :members do
     get "search", on: :collection
+    resources :entries, only: [:index]
   end
+
+  resources :entries
 
   resource :session, only: [:create, :destroy]
   resource :account, only: [:show, :edit, :update]
