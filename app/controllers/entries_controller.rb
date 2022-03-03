@@ -43,4 +43,10 @@ class EntriesController < ApplicationController
       render "edit"
     end
   end
+
+  def destroy
+    @entry = current_member.entries.find(params[:id])
+    @entry.destroy
+    redirect_to :entries, notice: "記事を削除しました。"
+  end
 end
