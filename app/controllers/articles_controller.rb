@@ -14,4 +14,23 @@ class ArticlesController < ApplicationController
   def edit
     @article = Article.find(params[:id])
   end
+
+  def create
+    @article = Article.new(params[:article])
+    if @article.save
+      redirect_to articles_path, notice: "ニュースを更新しました。"
+    else
+      render "new"
+    end
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    @article.assign_attributes(params[:article])
+    if @article.save
+      redirect_to @article, notice: "ニュース記事を更新しました"
+    else
+      render "edit"
+    end
+  end
 end
