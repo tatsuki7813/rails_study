@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
   def index
     @articles = Article.order(created_at: :desc)
+    @articles = @articles.open_to_the_public unless current_member
+    unless current_member&.administrator?
+      @articles = @articles.visible
+    end
   end
 
   def show
