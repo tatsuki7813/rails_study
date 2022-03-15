@@ -3,6 +3,12 @@ class Article < ApplicationRecord
   validates :title, length: { maximum: 80 }
   validates :body, length: { maximum: 2000 }
 
+  validate do
+    if expired_at && expired_at < released_at
+      errors.add(:expired_at, :expired_at_too_old)
+    end
+  end
+
   scope :open_to_the_public, -> { where(member_only: false) }
   scope :visible, -> do
     now = Time.current
